@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 13:58:03 by yooshima          #+#    #+#             */
-/*   Updated: 2024/12/28 15:18:09 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/28 17:36:33 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ int main() {
 	std::string command;
 	while (1) {
 		std::cout << "Enter command: ";
-		std::getline(std::cin, command);
+		if (!std::getline(std::cin, command)) {
+			std::cout << "EOF" << std::endl;
+			break;
+		}
 		if (command == "ADD")
 			p.AddContact();
 		else if (command == "SEARCH")
