@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 11:23:31 by yooshima          #+#    #+#             */
-/*   Updated: 2024/12/28 14:26:34 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/28 15:49:35 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,18 @@ void	PhoneBook::AddContact() {
 	for (int i = 0; i < 5; i++)
 	{
 		std::cout << prompts[i];
-		std::cin >> input;
+		std::getline(std::cin, input);
 		contacts[index].addInfo(i, input);
 	}
-	std::cout << "-----input check-----" << std::endl;
-	for (int j = 0; j < 5; j++) {
-		std::cout << contacts[index].getInfo(j) << std::endl;
-	}
-	std::cout << "---------------------" << std::endl;
 	size++;
 };
 
-Contact	PhoneBook::SearchContact() {
-	Contact c;
-	return c;
+void	PhoneBook::SearchContact() {
+	std::string input;
+	std::cout << "Enter index: ";
+	std::getline(std::cin, input);
+	
+	int index = std::atoi(input.c_str());
+	for (int i = 0; i < 4; i++)
+		std::cout << contacts[index].getInfo(i) << std::endl;
 };
