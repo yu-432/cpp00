@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 11:23:31 by yooshima          #+#    #+#             */
-/*   Updated: 2024/12/30 15:22:28 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/30 15:46:05 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,13 @@ PhoneBook::~PhoneBook() {
 
 void	PhoneBook::AddContact() {
 	Contact temp;
-
 	std::string line;
-	size_t index = size % 8;
+
 	for (int i = 0; i < 5;)
 	{
-		std::cout << std::right << std::setw(16) << PROMPTS[i];
+		std::cout << std::right << std::setw(PROMPT_WIDTH) << PROMPTS[i];
 		if (!std::getline(std::cin, line)) {
-			std::cout << "Error! AddContact get EOF" << std::endl;
+			std::cout << "Error: Get EOF" << std::endl;
 			exit(1);
 		}
 		if (!line.length())
@@ -40,34 +39,35 @@ void	PhoneBook::AddContact() {
 		temp.addInfo(i, line);
 		i++;
 	}
-	contacts[index] = temp;
-	std::cout << "-----Success-----" << std::endl;
+	contacts[size % 8] = temp;
+	std::cout << "<-----Success----->" << std::endl;
 	size++;
 }
 
-void	PhoneBook::SearchContact() {
+void	PhoneBook::SearchContact() const {
 	ShowContactList();
 
 	std::string line;
 	std::cout << "Enter index: ";
 	if (!std::getline(std::cin, line)) {
-		std::cout << "Error: SearchContact get EOF" << std::endl;
+		std::cout << "Error: Get EOF" << std::endl;
 		exit(1);
 	}
 	
 	int index = std::atoi(line.c_str());
-	if (index < 0 || index > 7){
+	if (index < 0 || CONTACT_MAX <= index){
 		std::cout << "Error: Index out of range 0-7" << std::endl;
 		return ;
 	}
+
 	DisplayContact(index);
 }
 
-void	PhoneBook::ShowContactList() {
+void	PhoneBook::ShowContactList() const {
 	std::string contact;
 
 	std::cout << "     Index|First Name| Last Name|  Nickname" <<std::endl;
-	for (int i = 0; i < 8; i++) {
+	for (int i = 0; i < CONTACT_MAX; i++) {
 		if (i >= (int)size)
 			return ;
 		std::cout << std::right << std::setw(10) << i << "|";
@@ -77,19 +77,19 @@ void	PhoneBook::ShowContactList() {
 				contact = contact.substr(0, 9) + ".";
 			std::cout << std::right << std:: setw(10) << contact;
 			if (j < 2)
-			std::cout << "|";
+				std::cout << "|";
 		}
 		std::cout << std::endl;
 	}
 }
 
-void	PhoneBook::DisplayContact(int index) {
+void	PhoneBook::DisplayContact(int index) const {
 	if (index >= (int)size) {
 		std::cout << "Contact not found" << std::endl;
 		return ;
 	}
 	for (int i = 0; i < 5; i++) {
-		std::cout << std::right << std::setw(16) << PROMPTS[i];
+		std::cout << std::right << std::setw(PROMPT_WIDTH) << PROMPTS[i];
 		std::cout << contacts[index].getInfo(i) << std::endl;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 13:58:03 by yooshima          #+#    #+#             */
-/*   Updated: 2024/12/28 20:23:34 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/30 15:41:14 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main() {
 	while (true) {
 		std::cout << "PhoneBook> ";
 		if (!std::getline(std::cin, command)) {
-			std::cout << "\nError!\nGet EOF" << std::endl;
+			std::cout << "Error: Get EOF" << std::endl;
 			exit(1);
 		}
 		if (command == "ADD")
