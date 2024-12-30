@@ -6,30 +6,30 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 13:58:03 by yooshima          #+#    #+#             */
-/*   Updated: 2024/12/28 17:36:33 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/28 20:23:34 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
 
 int main() {
-	Contact c;
-	PhoneBook p;
+	PhoneBook phonebook;
 	std::string command;
-	while (1) {
-		std::cout << "Enter command: ";
+
+	while (true) {
+		std::cout << "PhoneBook> ";
 		if (!std::getline(std::cin, command)) {
-			std::cout << "EOF" << std::endl;
-			break;
+			std::cout << "\nError!\nGet EOF" << std::endl;
+			exit(1);
 		}
 		if (command == "ADD")
-			p.AddContact();
+			phonebook.AddContact();
 		else if (command == "SEARCH")
-			p.SearchContact();
+			phonebook.SearchContact();
 		else if (command == "EXIT")
 			break;
 		else
-			std::cout << "Type \"ADD\" \"SEARCH\" \"EXIT\"" << std::endl;
+			std::cout << "Use ADD, SEARCH or EXIT" << std::endl;
 	}
 	return 0;
 }

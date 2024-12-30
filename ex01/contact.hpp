@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 13:06:14 by yooshima          #+#    #+#             */
-/*   Updated: 2024/12/28 13:12:04 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/12/28 20:13:53 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,6 @@
 #define CONTACT_HPP
 
 #include <string>
-
-enum Firlds {
-	FIRST_NAME,
-	LAST_NAME,
-	NICKNAME,
-	PHONE_NUMBER,
-	DARKEST_SECRET
-};
 
 class Contact{
 	public:
